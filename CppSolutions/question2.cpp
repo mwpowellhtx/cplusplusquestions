@@ -73,21 +73,20 @@ namespace q2 {
                 /* Descending order.
                 http://en.cppreference.com/w/cpp/algorithm/sort */
                 sort(predicated.begin(), predicated.end(),
-                    [](const question_pair& a, const question_pair& b) {
-                        return a.first > b.first; });
+                    [](const question_pair& a, const question_pair& b) { return a.first > b.first; });
+                
+                auto selected = from(predicated) >> take(count) >> to_vector();
 
-                        auto selected = from(predicated) >> take(count) >> to_vector();
+                cout << "The largest " << count << " " << name << " numbers are: ";
                         
-                        cout << "The largest " << count << " " << name << " numbers are: ";
-                        
-                        if (!(from(selected) >> any())) {
-                            cout << "(there are not any)";
-                        }
-                        else {
-                            for (const auto& p : selected) {
-                                cout << p.first << " ";
-                            }
-                        }
+                if (!(from(selected) >> any())) {
+                    cout << "(there are not any)";
+                }
+                else {
+                    for (const auto& p : selected) {
+                        cout << p.first << " ";
+                    }
+                }
             }
             catch (...) {
                 //TODO: Generally better not to swallow exceptions like this.

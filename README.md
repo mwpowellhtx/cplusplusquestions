@@ -27,7 +27,23 @@ The first number read from the file is N.
 Print the N largest numbers in ascending order.
 
 ### Question 2 Part 2 Proposal
-
+    
 How would you solve this problem if you had to print N largest numbers, not necessarily distinct?
 
 ### Solution
+
+Key features solving this problem include the following highlights:
+
+* Supply an integer reader function that reads an integer at a time from an input stream. This can be any stream, file, memory, whatever.
+
+* Tally the input numbers in a [std::map](http://www.cplusplus.com/reference/map/). Followed by extracting the [std::pair](http://www.cplusplus.com/reference/utility/pair/) elements from the map into a vector. From there we can [sort](http://en.cppreference.com/w/cpp/algorithm/sort), print, whatever else we need to do.
+
+* Inject [functional](http://www.cplusplus.com/reference/functional/function/) methods for key points of extensibility: i.e. Part 2 of the proposed issue. Injected handlers can be functions themselves, or I like to utilize lambda expressions, is a common thing to do in the industry.
+
+* Finally, I utilize a third-party library called [LINQ for C++](http://cpplinq.codeplex.com/), available through NuGet sources, or download from the project web site. Include one file, "cpplinq.hpp", and you get the feel of LINQ goodness operating in C++. This is important to ask two key questions about the tallied numbers:
+
+** First, what we are predicating the response one: distinct, non-distinct, which we injected via the functional paradigm.
+
+** Second, the scope of the response we are interested in: we want the first N largest numbers.
+
+From there we simply use "standard" language features such as [std::cout](http://www.cplusplus.com/reference/iostream/cout/) to report the response.
