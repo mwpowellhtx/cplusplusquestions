@@ -87,7 +87,7 @@ namespace q2 {
                 auto selected = from(predicated) >> take(count) >> to_vector();
 
                 cout << "The largest " << count << " " << name << " numbers are: ";
-                        
+
                 if (!(from(selected) >> any())) {
                     cout << "(there are not any)";
                 }
