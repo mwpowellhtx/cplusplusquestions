@@ -4,6 +4,8 @@
 
 Overall, the layout separates the problem proposals into namespaces numbered according to the proposal number.
 
+The solution depends on Visual Studio 2012 Professional.
+
 ## Question 1 Proposal
 
 Implement a Stack data structure using a linked list node. Details below:
