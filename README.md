@@ -76,4 +76,4 @@ I took an [iterator](http://www.cplusplus.com/reference/iterator/RandomAccessIte
 
 Additionally, "binary" is somewhat of a misnomer here. I understand what we are wanting to accomplish there, which is more like a bisectional algorithm than a truly binary one.
 
-The solution itself depends on only vectors and iterators. The tests, demonstrations of solution application, may interject additional dependencies on the element type, such as for integers or strings.
+The solution itself depends on only vectors and iterators, with the element type along for the ride for functional predicate purposes. The tests, demonstrations of solution application, may interject additional dependencies on the element type, such as for integers or strings.
