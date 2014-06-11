@@ -88,6 +88,7 @@
   <ItemGroup>
     <ClInclude Include="question1.h" />
     <ClInclude Include="question2.h" />
+    <ClInclude Include="question3.h" />
     <ClInclude Include="stdafx.h" />
     <ClInclude Include="targetver.h" />
   </ItemGroup>
@@ -95,6 +96,7 @@
     <ClCompile Include="CppSolutions.cpp" />
     <ClCompile Include="question1.cpp" />
     <ClCompile Include="question2.cpp" />
+    <ClCompile Include="question3.cpp" />
     <ClCompile Include="stdafx.cpp" />
   </ItemGroup>
   <ItemGroup>

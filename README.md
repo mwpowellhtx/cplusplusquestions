@@ -1,5 +1,9 @@
 # C++ Solutions
 
+## Solutions Organization
+
+Overall, the layout separates the problem proposals into namespaces numbered according to the proposal number.
+
 ## Question 1 Proposal
 
 Implement a Stack data structure using a linked list node. Details below:
@@ -47,3 +51,17 @@ Key features solving this problem include the following highlights:
   * Second, the scope of the response we are interested in: we want the first N largest numbers.
 
 From there we simply use "standard" language features such as [std::cout](http://www.cplusplus.com/reference/iostream/cout/) to report the response.
+
+## Question 3 Proposal
+
+Given a sorted array of strings, which is interspersed with empty strings, write a binary search function to find the location of a given string.
+
+For example, find "ball" in ["at","","","","ball","","","car","dad","",""] will return 4.
+
+### Solution
+
+I took an [iterator](http://www.cplusplus.com/reference/iterator/RandomAccessIterator/) based approach on this one. With iterator arithmetic the desired index can be determined. Assumptions are that are rely on our trusted vector, once again.
+
+Additionally, "binary" is somewhat of a misnomer here. I understand what we are wanting to accomplish there, which is more like a bisectional algorithm than a truly binary one.
+
+The solution itself depends on only vectors and iterators. The tests, demonstrations of solution application, may interject additional dependencies on the element type, such as for integers or strings.
