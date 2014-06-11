@@ -42,7 +42,7 @@ Key features solving this problem include the following highlights:
 
 * Finally, I utilize a third-party library called [LINQ for C++](http://cpplinq.codeplex.com/), available through NuGet sources, or download from the project web site. Include one file, "cpplinq.hpp", and you get the feel of [LINQ](http://msdn.microsoft.com/en-us/library/bb397926.aspx) goodness operating in C++. This is important to ask two key questions about the tallied numbers:
 
-  * First, what we are predicating the response one: distinct, non-distinct, which we injected via the functional paradigm.
+  * First, what we are predicating the response on: distinct, non-distinct, which we injected via the functional paradigm.
 
   * Second, the scope of the response we are interested in: we want the first N largest numbers.
 
