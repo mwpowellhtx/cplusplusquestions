@@ -40,7 +40,7 @@ How would you solve this problem if you had to print N largest numbers, not nece
 
 Key features solving this problem include the following highlights:
 
-* Supply an integer reader function that reads one integer at a time from an input stream, assuming that one line contains one integer value. This can be any stream, file, memory, whatever.
+* Supply an integer reader function that reads one integer at a time from an input stream, assuming that one line contains one integer value. The stream may be derived from file, memory, and so on.
 
 * Tally the input numbers in a [std::map](http://www.cplusplus.com/reference/map/), followed by extracting the [std::pair](http://www.cplusplus.com/reference/utility/pair/) elements from the map into a vector. From there we can [sort](http://en.cppreference.com/w/cpp/algorithm/sort), print, whatever else we need to do.
 
@@ -76,6 +76,6 @@ will return 4.
 
 I took an [iterator](http://www.cplusplus.com/reference/iterator/RandomAccessIterator/) based approach on this one. With iterator arithmetic the desired index can be determined. Assumptions are that we rely on our trusted vector, once again.
 
-Additionally, "binary" is somewhat of a misnomer here. I understand what we are wanting to accomplish there, which is more like a bisectional algorithm than a truly binary one.
+Additionally, "binary" is somewhat of a misnomer here. I understand what we are wanting to accomplish there, which is more like a [bisectional algorithm](http://en.wikipedia.org/wiki/Bisection_method) than a truly binary one. It's similar, but not quite; a key difference is, for instance, we make no assumptions, indeed cannot, that the vector is sorted. Indeed, it is not, as stated in the use case.
 
 The solution itself depends on only vectors and iterators, with the element type along for the ride for functional predicate purposes. The tests, demonstrations of solution application, may interject additional dependencies on the element type, such as for integers or strings.
