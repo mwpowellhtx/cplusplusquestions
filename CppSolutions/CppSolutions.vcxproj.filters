@@ -52,6 +52,9 @@
     <ClCompile Include="question3.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="linqedmap.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />

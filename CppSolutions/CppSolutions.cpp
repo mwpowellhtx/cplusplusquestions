@@ -13,15 +13,15 @@ int _tmain(int argc, _TCHAR* argv[])
 
     q2::read_ints_print_n_largest_numbers(
         "data.txt", "distinct",
-        [](const q2::question_pair& a) { return a.second == 1; });
+        [](const q2::paired_type& a) { return a.second == 1; });
 
     q2::read_ints_print_n_largest_numbers(
         "data-no-distinct.txt", "distinct",
-        [](const q2::question_pair& a) { return a.second == 1; });
+        [](const q2::paired_type& a) { return a.second == 1; });
 
     q2::read_ints_print_n_largest_numbers(
         "data.txt", "non distinct",
-        [](const q2::question_pair& a) { return true; });
+        [](const q2::paired_type& a) { return true; });
 
     auto& int_values = q3::get_int_values();
 

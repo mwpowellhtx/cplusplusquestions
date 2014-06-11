@@ -5,7 +5,7 @@
 
 namespace q2 {
 
-    typedef std::vector<question_pair> question_pair_vector;
+    typedef question_map::value_type question_map_value_type;
 
     /// Read the next int from stream.
     /// @is an input stream
@@ -33,7 +33,7 @@ namespace q2 {
     void read_ints_print_n_largest_numbers(
         const std::string fn,
         const std::string name,
-        std::function<bool(const question_pair&)> pp) {
+        std::function<bool(const paired_type&)> pp) {
 
             using std::ifstream;
             using std::ios_base;
@@ -47,37 +47,34 @@ namespace q2 {
 
                 int count;
 
-                /* It's all about trade-offs. But for the follow on questions, std::map
-                could be a better initial choice. However, there are a couple of follow
-                on questions that operate on vectors. Or potentially needs a LINQ for C++
-                bridge. */
-                question_pair_vector paired;
+                /* Can work with map after all. It's a bit tricky querying
+                 from the elements, but it's perfectly doable. */
+                question_map paired;
                 
                 read_int(ifs, count);
                 
                 int value;
 
                 while (read_int(ifs, value)) {
-            
-                    auto paired_end = paired.end();
+
+                    auto found = paired.find(value);
                     
-                    auto found = find_if(paired.begin(), paired_end,
-                        [value](const question_pair& p) { return p.first == value; });
-                    
-                    if (found != paired_end) {
+                    if (found != paired.end()) {
                         found->second++;
                         continue;
                     }
                     
-                    paired.push_back(question_pair(value, 1));
+                    paired[value] = 1;
                 }
 
-                auto predicated = from(paired) >> where(pp) >> to_vector();
+                //Move away from the map and into a selected-vector as soon as possible.
+                auto predicated = from(paired) >> select([](const question_map_value_type& p) {
+                    return paired_type(p.first, p.second); }) >> where(pp) >> to_vector();
                 
-                //auto ascending = [](const question_pair& a, const question_pair& b) {
+                //auto ascending = [](const paired_type& a, const paired_type& b) {
                 //    return a.first < b.first;
                 //};
-                auto descending = [](const question_pair& a, const question_pair& b) {
+                auto descending = [](const paired_type& a, const paired_type& b) {
                     return a.first > b.first;
                 };
                 // http://en.cppreference.com/w/cpp/algorithm/sort
