@@ -3,9 +3,12 @@
 
 #include "stdafx.h"
 
+#include "question1.h"
 
 int _tmain(int argc, _TCHAR* argv[])
 {
-	return 0;
+    q1::implement_stack();
+
+    return 0;
 }
 
