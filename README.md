@@ -56,7 +56,19 @@ From there we simply use "standard" language features such as [std::cout](http:/
 
 Given a sorted array of strings, which is interspersed with empty strings, write a binary search function to find the location of a given string.
 
-For example, find "ball" in ["at","","","","ball","","","car","dad","",""] will return 4.
+For example, find:
+
+<pre>
+"ball"
+</pre>
+
+in:
+
+<pre>
+[ "at", "", "", "", "ball", "", "", "car", "dad", "", ""]
+</pre>
+
+will return 4.
 
 ### Solution
 
