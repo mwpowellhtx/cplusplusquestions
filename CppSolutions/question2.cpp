@@ -39,6 +39,7 @@ namespace q2 {
             using std::ios_base;
             using namespace cpplinq;
             using std::cout;
+            using std::endl;
             using std::getchar;
 
             try {
@@ -97,6 +98,8 @@ namespace q2 {
                         cout << p.first << " ";
                     }
                 }
+
+                cout << endl;
             }
             catch (...) {
                 //TODO: Generally better not to swallow exceptions like this.

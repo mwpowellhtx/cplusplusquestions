@@ -64,6 +64,7 @@ namespace q3 {
 
         using std::vector;
         using std::cout;
+        using std::endl;
         using std::getchar;
 
         auto begin = values.begin();
@@ -81,6 +82,8 @@ namespace q3 {
         else
             cout << "found " << value_to_find << " at index " << (found - begin);
 
+        cout << endl;
+
         getchar();
     }
 
@@ -89,6 +92,7 @@ namespace q3 {
         using std::vector;
         using std::string;
         using std::cout;
+        using std::endl;
         using std::getchar;
 
         auto begin = values.begin();
@@ -105,6 +109,8 @@ namespace q3 {
             cout << "did not find " << value_to_find;
         else
             cout << "found " << value_to_find << " at index " << (found - begin);
+
+        cout << endl;
 
         getchar();
     }
