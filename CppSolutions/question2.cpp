@@ -46,13 +46,17 @@ namespace q2 {
                 ifstream ifs(fn, ios_base::in);
 
                 int count;
-                
+
+                /* It's all about trade-offs. But for the follow on questions, std::map
+                could be a better initial choice. However, there are a couple of follow
+                on questions that operate on vectors. Or potentially needs a LINQ for C++
+                bridge. */
                 question_pair_vector paired;
                 
                 read_int(ifs, count);
                 
                 int value;
-                
+
                 while (read_int(ifs, value)) {
             
                     auto paired_end = paired.end();
@@ -67,13 +71,17 @@ namespace q2 {
                     
                     paired.push_back(question_pair(value, 1));
                 }
-                
+
                 auto predicated = from(paired) >> where(pp) >> to_vector();
                 
-                /* Descending order.
-                http://en.cppreference.com/w/cpp/algorithm/sort */
-                sort(predicated.begin(), predicated.end(),
-                    [](const question_pair& a, const question_pair& b) { return a.first > b.first; });
+                auto ascending = [](const question_pair& a, const question_pair& b) {
+                    return a.first < b.first;
+                };
+                //auto descending = [](const question_pair& a, const question_pair& b) {
+                //    return a.first > b.first;
+                //};
+                // http://en.cppreference.com/w/cpp/algorithm/sort
+                sort(predicated.begin(), predicated.end(), ascending);
                 
                 auto selected = from(predicated) >> take(count) >> to_vector();
 

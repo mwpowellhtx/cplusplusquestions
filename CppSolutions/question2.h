@@ -5,7 +5,6 @@
 #include <iostream>
 #include <fstream>
 #include <functional>
-#include <map>
 
 namespace q2 {
 
