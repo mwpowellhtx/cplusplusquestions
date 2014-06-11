@@ -1,4 +1,2 @@
-cplusplusquestions
-==================
+== C++ Solutions ==
 
-C++ Interview Solutions
