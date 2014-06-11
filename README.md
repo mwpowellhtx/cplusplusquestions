@@ -44,6 +44,8 @@ Key features solving this problem include the following highlights:
 
 * Tally the input numbers in a [std::map](http://www.cplusplus.com/reference/map/), followed by extracting the [std::pair](http://www.cplusplus.com/reference/utility/pair/) elements from the map into a vector. From there we can [sort](http://en.cppreference.com/w/cpp/algorithm/sort), print, whatever else we need to do.
 
+  * Actually, map was the initial approach, but upon further examination, the trade off extracting vectors for sorting was not worth it. So I fell back on a purely vector-oriented approach. Just capture the paired tallies and do whatever selecting, sorting, and so forth, is required.
+
 * Inject [functional](http://www.cplusplus.com/reference/functional/function/) methods for key points of extensibility: i.e. Part 2 of the proposed issue. Injected handlers can be functions themselves, or I like to utilize lambda expressions, is a common thing to do in the industry.
 
 * Finally, I utilize a third-party library called [LINQ for C++](http://cpplinq.codeplex.com/), available through NuGet sources, or download from the project web site. Include one file, "cpplinq.hpp", and you get the feel of [LINQ](http://msdn.microsoft.com/en-us/library/bb397926.aspx) goodness operating in C++. This is important to ask two key questions about the tallied numbers:
