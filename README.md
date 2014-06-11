@@ -65,7 +65,7 @@ For example, find:
 in:
 
 <pre>
-[ "at", "", "", "", "ball", "", "", "car", "dad", "", ""]
+[ "at", "", "", "", "ball", "", "", "car", "dad", "", "" ]
 </pre>
 
 will return 4.
