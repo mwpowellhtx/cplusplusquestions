@@ -40,9 +40,9 @@ How would you solve this problem if you had to print N largest numbers, not nece
 
 Key features solving this problem include the following highlights:
 
-* Supply an integer reader function that reads an integer at a time from an input stream. This can be any stream, file, memory, whatever.
+* Supply an integer reader function that reads one integer at a time from an input stream, assuming that one line contains one integer value. This can be any stream, file, memory, whatever.
 
-* Tally the input numbers in a [std::map](http://www.cplusplus.com/reference/map/). Followed by extracting the [std::pair](http://www.cplusplus.com/reference/utility/pair/) elements from the map into a vector. From there we can [sort](http://en.cppreference.com/w/cpp/algorithm/sort), print, whatever else we need to do.
+* Tally the input numbers in a [std::map](http://www.cplusplus.com/reference/map/), followed by extracting the [std::pair](http://www.cplusplus.com/reference/utility/pair/) elements from the map into a vector. From there we can [sort](http://en.cppreference.com/w/cpp/algorithm/sort), print, whatever else we need to do.
 
 * Inject [functional](http://www.cplusplus.com/reference/functional/function/) methods for key points of extensibility: i.e. Part 2 of the proposed issue. Injected handlers can be functions themselves, or I like to utilize lambda expressions, is a common thing to do in the industry.
 
@@ -74,7 +74,7 @@ will return 4.
 
 ### Solution
 
-I took an [iterator](http://www.cplusplus.com/reference/iterator/RandomAccessIterator/) based approach on this one. With iterator arithmetic the desired index can be determined. Assumptions are that are rely on our trusted vector, once again.
+I took an [iterator](http://www.cplusplus.com/reference/iterator/RandomAccessIterator/) based approach on this one. With iterator arithmetic the desired index can be determined. Assumptions are that we rely on our trusted vector, once again.
 
 Additionally, "binary" is somewhat of a misnomer here. I understand what we are wanting to accomplish there, which is more like a bisectional algorithm than a truly binary one.
 
