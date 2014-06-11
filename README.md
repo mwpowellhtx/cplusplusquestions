@@ -40,7 +40,7 @@ Key features solving this problem include the following highlights:
 
 * Inject [functional](http://www.cplusplus.com/reference/functional/function/) methods for key points of extensibility: i.e. Part 2 of the proposed issue. Injected handlers can be functions themselves, or I like to utilize lambda expressions, is a common thing to do in the industry.
 
-* Finally, I utilize a third-party library called [LINQ for C++](http://cpplinq.codeplex.com/), available through NuGet sources, or download from the project web site. Include one file, "cpplinq.hpp", and you get the feel of LINQ goodness operating in C++. This is important to ask two key questions about the tallied numbers:
+* Finally, I utilize a third-party library called [LINQ for C++](http://cpplinq.codeplex.com/), available through NuGet sources, or download from the project web site. Include one file, "cpplinq.hpp", and you get the feel of [LINQ](http://msdn.microsoft.com/en-us/library/bb397926.aspx) goodness operating in C++. This is important to ask two key questions about the tallied numbers:
 
 ** First, what we are predicating the response one: distinct, non-distinct, which we injected via the functional paradigm.
 
