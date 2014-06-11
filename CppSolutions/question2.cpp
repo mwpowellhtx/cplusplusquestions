@@ -74,14 +74,15 @@ namespace q2 {
 
                 auto predicated = from(paired) >> where(pp) >> to_vector();
                 
-                auto ascending = [](const question_pair& a, const question_pair& b) {
-                    return a.first < b.first;
-                };
-                //auto descending = [](const question_pair& a, const question_pair& b) {
-                //    return a.first > b.first;
+                //auto ascending = [](const question_pair& a, const question_pair& b) {
+                //    return a.first < b.first;
                 //};
+                auto descending = [](const question_pair& a, const question_pair& b) {
+                    return a.first > b.first;
+                };
                 // http://en.cppreference.com/w/cpp/algorithm/sort
-                sort(predicated.begin(), predicated.end(), ascending);
+                //This was correct the first time. To get the largest numbers from the front.
+                sort(predicated.begin(), predicated.end(), descending);
                 
                 auto selected = from(predicated) >> take(count) >> to_vector();
 
@@ -91,7 +92,11 @@ namespace q2 {
                     cout << "(there are not any)";
                 }
                 else {
-                    for (const auto& p : selected) {
+
+                    //Which then we want to reverse the selected ones, for ascending order.
+                    auto reversed = from(selected) >> reverse() >> to_vector();
+
+                    for (const auto& p : reversed) {
                         cout << p.first << " ";
                     }
                 }
