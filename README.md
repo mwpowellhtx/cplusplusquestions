@@ -44,7 +44,7 @@ Key features solving this problem include the following highlights:
 
 * Tally the input numbers in a [std::map](http://www.cplusplus.com/reference/map/), followed by extracting the [std::pair](http://www.cplusplus.com/reference/utility/pair/) elements from the map into a vector. From there we can [sort](http://en.cppreference.com/w/cpp/algorithm/sort), print, whatever else we need to do.
 
-  -* Actually, map was the initial approach, but upon further examination, the trade off extracting vectors for sorting was not worth it. So I fell back on a purely vector-oriented approach. Just capture the paired tallies and do whatever selecting, sorting, and so forth, is required.-
+  ~~* Actually, map was the initial approach, but upon further examination, the trade off extracting vectors for sorting was not worth it. So I fell back on a purely vector-oriented approach. Just capture the paired tallies and do whatever selecting, sorting, and so forth, is required.~~
 
   * After some experimentation, I was able to make map work through LINQ after all. Which means we get the performance goodness of maps when tallying, as well as the ability to nicely extract the tallied values.
 
