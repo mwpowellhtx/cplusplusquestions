@@ -16,6 +16,8 @@
   </ItemGroup>
   <ItemGroup>
     <Text Include="ReadMe.txt" />
+    <Text Include="data.txt" />
+    <Text Include="data-no-distinct.txt" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="stdafx.h">
@@ -24,8 +26,11 @@
     <ClInclude Include="targetver.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="question2.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
     <ClInclude Include="question1.h">
-      <Filter>Source Files</Filter>
+      <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -38,5 +43,11 @@
     <ClCompile Include="question1.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="question2.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="packages.config" />
   </ItemGroup>
 </Project>

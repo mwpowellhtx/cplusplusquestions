@@ -17,3 +17,17 @@ No need to reinvent the wheel. Academically, we've all done lists, stacks, trees
 However, in the real-world, we may do this, or we would rather add value by focusing on the solution to the problem at hand. That means utilizing the already established features at our disposal.
 
 Specifically, in this case, utilize the [std::vector](http://www.cplusplus.com/reference/vector/). There is also a [std::stack](http://www.cplusplus.com/reference/stack/), but I think vector is perfectly sufficient for most things. A second choice might be [std::deque](http://www.cplusplus.com/reference/deque/).
+
+## Question 2 Proposal
+
+Write a program to read integers from a file and print N largest distinct numbers.
+
+The first number read from the file is N.
+
+Print the N largest numbers in ascending order.
+
+### Question 2 Part 2 Proposal
+
+How would you solve this problem if you had to print N largest numbers, not necessarily distinct?
+
+### Solution
