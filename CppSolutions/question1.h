@@ -14,11 +14,16 @@ namespace q1 {
         cout << "stack::size: " << stack.size() << endl;
         
         cout << "stack values: ";
-        
-        auto end = stack.cend();
-        
-        for (auto it = stack.cbegin(); it != end; it++) {
-            cout << *it << " ";
+
+        ////using the iterator
+        //auto end = stack.cend();
+        //for (auto it = stack.cbegin(); it != end; it++) {
+        //    cout << *it << " ";
+        //}
+
+        //using range based loop
+        for (auto& x : stack) {
+            cout << x << " ";
         }
         
         cout << endl;
