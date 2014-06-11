@@ -1,2 +1,2 @@
-== C++ Solutions ==
-
+C++ Solutions
+=============
