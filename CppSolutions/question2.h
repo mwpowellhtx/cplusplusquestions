@@ -12,7 +12,7 @@ namespace q2 {
 
     typedef std::map<int, int, std::greater<int> > question_input_map;
 
-    typedef std::set<int, std::less<int> > question_result_set;
+    typedef std::set<int> question_result_set;
 
     typedef question_input_map::value_type paired_type;
 

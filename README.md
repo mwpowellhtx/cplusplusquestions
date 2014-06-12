@@ -46,7 +46,9 @@ Key features solving this problem include the following highlights:
 
   * ~~Actually, map was the initial approach, but upon further examination, the trade off extracting vectors for sorting was not worth it. So I fell back on a purely vector-oriented approach. Just capture the paired tallies and do whatever selecting, sorting, and so forth, is required.~~
 
-  * After some experimentation, I was able to make map work through LINQ after all. Which means we get the performance goodness of maps when tallying, as well as the ability to nicely extract the tallied values.
+  * ~~After some experimentation, I was able to make map work through LINQ after all. Which means we get the performance goodness of maps when tallying, as well as the ability to nicely extract the tallied values.~~
+
+  * LINQ has its uses, but for sake of this example, it is overkill. Again, we'll leverage built-in language features. We will use map to capture the input result, leveraging the [std::map::key_comp](http://www.cplusplus.com/reference/map/map/key_comp/) template argument. The default is [std::less](http://www.cplusplus.com/reference/functional/less/), but for input purposes, we actually want [std::greater](http://www.cplusplus.com/reference/functional/greater/). Then we capture the results using [std::set](http://www.cplusplus.com/reference/set/), whose [comparison object](http://www.cplusplus.com/reference/set/set/key_comp/) is also less, which we're satisfied with since we get the desired ascending order consequently.
 
 * Inject [functional](http://www.cplusplus.com/reference/functional/function/) methods for key points of extensibility: i.e. Part 2 of the proposed issue. Injected handlers can be functions themselves, or I like to utilize lambda expressions, is a common thing to do in the industry.
 
