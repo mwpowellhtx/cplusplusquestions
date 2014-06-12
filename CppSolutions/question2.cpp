@@ -1,11 +1,11 @@
 #include "question2.h"
 
 #include <sstream>
-#include "cpplinq.hpp"
 
 namespace q2 {
 
-    typedef question_map::value_type question_map_value_type;
+    //obsolete
+    typedef question_input_map::value_type question_map_value_type;
 
     /// Read the next int from stream.
     /// @is an input stream
@@ -33,11 +33,10 @@ namespace q2 {
     void read_ints_print_n_largest_numbers(
         const std::string fn,
         const std::string name,
-        std::function<bool(const paired_type&)> pp) {
+        std::function<bool(const paired_type&)> predicate) {
 
             using std::ifstream;
             using std::ios_base;
-            using namespace cpplinq;
             using std::cout;
             using std::endl;
             using std::getchar;
@@ -46,14 +45,14 @@ namespace q2 {
 
                 ifstream ifs(fn, ios_base::in);
 
+                //1) read in the count
                 int count;
 
-                /* Can work with map after all. It's a bit tricky querying
-                 from the elements, but it's perfectly doable. */
-                question_map paired;
-                
                 read_int(ifs, count);
-                
+
+                //2) tally the ordered values descending key value
+                question_input_map paired;
+
                 int value;
 
                 while (read_int(ifs, value)) {
@@ -68,34 +67,27 @@ namespace q2 {
                     paired[value] = 1;
                 }
 
-                //Move away from the map and into a selected-vector as soon as possible.
-                auto predicated = from(paired) >> select([](const question_map_value_type& p) {
-                    return paired_type(p.first, p.second); }) >> where(pp) >> to_vector();
-                
-                //auto ascending = [](const paired_type& a, const paired_type& b) {
-                //    return a.first < b.first;
-                //};
-                auto descending = [](const paired_type& a, const paired_type& b) {
-                    return a.first > b.first;
-                };
-                // http://en.cppreference.com/w/cpp/algorithm/sort
-                //This was correct the first time. To get the largest numbers from the front.
-                sort(predicated.begin(), predicated.end(), descending);
-                
-                auto selected = from(predicated) >> take(count) >> to_vector();
+                //3) capture the ordered results ascending set value
+                question_result_set results;
 
+                for (const auto& p : paired) {
+
+                    if (results.size() == count) break;
+
+                    if (!predicate(p)) continue;
+
+                    results.insert(p.first);
+                }
+
+                //4) report the response
                 cout << "The largest " << count << " " << name << " numbers are: ";
 
-                if (!(from(selected) >> any())) {
+                if (!results.size()) {
                     cout << "(there are not any)";
                 }
                 else {
-
-                    //Which then we want to reverse the selected ones, for ascending order.
-                    auto reversed = from(selected) >> reverse() >> to_vector();
-
-                    for (const auto& p : reversed) {
-                        cout << p.first << " ";
+                    for (const auto& r : results) {
+                        cout << r << " ";
                     }
                 }
 
