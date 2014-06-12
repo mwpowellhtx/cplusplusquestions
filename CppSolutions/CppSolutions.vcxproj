@@ -95,7 +95,6 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="CppSolutions.cpp" />
-    <ClCompile Include="future_then.cpp" />
     <ClCompile Include="linqedmap.cpp" />
     <ClCompile Include="question1.cpp" />
     <ClCompile Include="question2.cpp" />
