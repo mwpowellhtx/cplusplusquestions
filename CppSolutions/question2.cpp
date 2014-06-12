@@ -1,17 +1,25 @@
 #include "question2.h"
 
+#include <iostream>
+#include <fstream>
 #include <sstream>
 
-namespace q2 {
+#include "future_then.h"
 
-    //obsolete
-    typedef question_input_map::value_type question_map_value_type;
+namespace q2 {
+    
+    result_tallier::result_tallier(std::string name, std::string fn)
+        : _name(name), _fn(fn), _count(0), _future() {
+    }
+
+    result_tallier::~result_tallier() {
+    }
 
     /// Read the next int from stream.
     /// @is an input stream
     /// @value receives the next int value
     /// @returns whether reading should continue
-    bool read_int(std::istream& is, int& value) {
+    bool result_tallier::read_int(std::istream& is, int& value) {
 
         using std::string;
         using std::getline;
@@ -30,28 +38,18 @@ namespace q2 {
         return line.length() > 0;
     }
 
-    void read_ints_print_n_largest_numbers(
-        const std::string fn,
-        const std::string name,
-        std::function<bool(const paired_type&)> predicate) {
+    result_tallier::question_input_map result_tallier::load_input(std::string fn) {
 
             using std::ifstream;
             using std::ios_base;
-            using std::cout;
-            using std::endl;
-            using std::getchar;
+
+            question_input_map paired;
 
             try {
 
                 ifstream ifs(fn, ios_base::in);
 
-                //1) read in the count
-                int count;
-
-                read_int(ifs, count);
-
-                //2) tally the ordered values descending key value
-                question_input_map paired;
+                read_int(ifs, this->_count);
 
                 int value;
 
@@ -63,41 +61,92 @@ namespace q2 {
                         found->second++;
                         continue;
                     }
-                    
+
                     paired[value] = 1;
                 }
-
-                //3) capture the ordered results ascending set value
-                question_result_set results;
-
-                for (const auto& p : paired) {
-
-                    if (results.size() == count) break;
-
-                    if (!predicate(p)) continue;
-
-                    results.insert(p.first);
-                }
-
-                //4) report the response
-                cout << "The largest " << count << " " << name << " numbers are: ";
-
-                if (!results.size()) {
-                    cout << "(there are not any)";
-                }
-                else {
-                    for (const auto& r : results) {
-                        cout << r << " ";
-                    }
-                }
-
-                cout << endl;
             }
             catch (...) {
                 //TODO: Generally better not to swallow exceptions like this.
             }
 
-            getchar();
+            return paired;
     }
 
+    result_tallier::question_result_set result_tallier::compile_results(
+        const question_input_map& input, selection_func predicate) {
+
+            question_result_set results;
+
+            for (const auto& i : input) {
+                
+                if (results.size() == this->_count) break;
+
+                if (!predicate(i)) continue;
+
+                results.insert(i.first);
+            }
+ 
+            return results;
+    }
+
+    void result_tallier::tally(selection_func predicate) {
+
+        using std::async;
+
+        auto fn = this->_fn;
+
+        /* this is not too terrible of an async future nest,
+         but would be better to chain using a then paradigm,
+         which would also alleviate nested captures, etc */
+        this->_future = async([this, fn, predicate]() -> question_result_set {
+
+            auto input = async([this, fn]() -> question_input_map {
+                return load_input(fn); });
+
+            //input.wait();
+
+            return compile_results(input.get(), predicate); 
+        });
+
+        /* "then" the function can return, and when we're ready to show,
+        hopefully the results are waiting for us in the future, if not,
+        not far from it */
+    }
+
+    void result_tallier::show(std::ostream& os) {
+
+        using namespace std;
+
+        //obtain the result from the future: hopefully not unobtainium
+        auto results = this->_future.get();
+
+        os << "The largest " << this->_count << " " << this->_name << " numbers are: ";
+
+        if (!results.size()) {
+            os << "(there are not any)";
+        }
+        else for (const auto& r : results) {
+            os << r << " ";
+        }
+
+        os << endl;
+
+        getchar();
+    }
+
+    ///read integers from file and print the n largest numbers
+    /// @name the name of the scenario
+    /// @fn a file name
+    /// @predicate a predicate
+    void read_ints_print_n_largest_numbers(
+        std::string fn,
+        std::string name,
+        result_tallier::selection_func predicate) {
+
+        result_tallier rt(name, fn);
+
+        rt.tally(predicate);
+
+        rt.show(std::cout);
+    }
 }

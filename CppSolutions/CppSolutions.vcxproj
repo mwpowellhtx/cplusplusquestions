@@ -86,6 +86,7 @@
     <Text Include="ReadMe.txt" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="future_then.h" />
     <ClInclude Include="question1.h" />
     <ClInclude Include="question2.h" />
     <ClInclude Include="question3.h" />
@@ -94,6 +95,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="CppSolutions.cpp" />
+    <ClCompile Include="future_then.cpp" />
     <ClCompile Include="linqedmap.cpp" />
     <ClCompile Include="question1.cpp" />
     <ClCompile Include="question2.cpp" />

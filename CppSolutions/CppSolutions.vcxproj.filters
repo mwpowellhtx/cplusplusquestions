@@ -35,6 +35,9 @@
     <ClInclude Include="question3.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="future_then.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="stdafx.cpp">
@@ -53,6 +56,9 @@
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="linqedmap.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="future_then.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
