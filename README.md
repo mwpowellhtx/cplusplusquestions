@@ -58,6 +58,8 @@ Key features solving this problem include the following highlights:
 
   * Second, the scope of the response we are interested in: we want the first N largest numbers.
 
+* I also challenged myself to simplify the issue through a class implementation, as well as leverage the use of asynchronous futures. With more advanced language features, things like future chaining can be possible, instead of nesting, which makes it that much easier to deal with and maintain on a consistent basis.
+
 From there we simply use "standard" language features such as [std::cout](http://www.cplusplus.com/reference/iostream/cout/) to report the response.
 
 ## Question 3 Proposal
