@@ -6,9 +6,21 @@
 #include "question1.h"
 #include "question2.h"
 #include "question3.h"
+#include <stdio.h>
 
-int _tmain(int argc, _TCHAR* argv[])
-{
+void show_disclaimer() {
+
+    using namespace std;
+
+    cout << "Powell Demo C++ Solutions" << endl
+        << "Copyright (c) 2014 Michael W Powell" << endl
+        << "Press Enter to proceed through the responses..." << endl << endl;
+}
+
+int _tmain(int argc, _TCHAR* argv[]) {
+
+    show_disclaimer();
+
     q1::implement_stack();
 
     q2::read_ints_print_n_largest_numbers(
