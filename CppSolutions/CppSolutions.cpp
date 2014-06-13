@@ -23,17 +23,19 @@ int _tmain(int argc, _TCHAR* argv[]) {
 
     q1::implement_stack();
 
-    q2::read_ints_print_n_largest_numbers(
-        "data.txt", "distinct",
-        [](const q2::paired_type& a) { return a.second == 1; });
+    //DRY
+    const std::string name_distinct = "distinct";
+    const std::string name_non_distinct = "non distinct";
+    const std::string fn_data = "data.txt";
+    const std::string fn_data_no_distinct = "data-no-distinct.txt";
 
-    q2::read_ints_print_n_largest_numbers(
-        "data-no-distinct.txt", "distinct",
-        [](const q2::paired_type& a) { return a.second == 1; });
+    const auto select_distinct = [](const q2::paired_type& a) { return a.second == 1; };
+    const auto select_any = [](const q2::paired_type& a) { return true; };
 
-    q2::read_ints_print_n_largest_numbers(
-        "data.txt", "non distinct",
-        [](const q2::paired_type& a) { return true; });
+    //SOLID
+    q2::read_ints_print_n_largest_numbers(fn_data, name_distinct, select_distinct);
+    q2::read_ints_print_n_largest_numbers(fn_data_no_distinct, name_distinct, select_distinct);
+    q2::read_ints_print_n_largest_numbers(fn_data, name_non_distinct, select_any);
 
     auto& int_values = q3::get_int_values();
 

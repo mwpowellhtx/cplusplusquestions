@@ -7,11 +7,11 @@ namespace q3 {
     typedef std::vector<int>::iterator int_vector_iterator;
     typedef std::vector<std::string>::iterator string_vector_iterator;
 
-    std::vector<int> get_int_values() {
+    std::vector<int>& get_int_values() {
 
         //VS2012: Lack of initializer lists is really hard!
         //std::vector<int> values = { ... };
-        std::vector<int> values;
+        static std::vector<int> values;
         
         /* TODO: By the same token, sorted list of ints interspersed with 0.
         Isn't it, by definition then, unsorted? Or we include a default case
@@ -33,11 +33,11 @@ namespace q3 {
         return values;
     }
     
-    std::vector<std::string> get_string_values() {
+    std::vector<std::string>& get_string_values() {
         
         //VS2012: Lack of initializer lists is really hard!
         //std::vector<string> values = { ... };
-        std::vector<std::string> values;
+        static std::vector<std::string> values;
 
         /* TODO: By the same token, sorted list of ints interspersed with 0.
         Isn't it, by definition then, unsorted? Or we include a default case

@@ -7,9 +7,9 @@
 
 namespace q3 {
 
-    std::vector<int> get_int_values();
+    std::vector<int>& get_int_values();
 
-    std::vector<std::string> get_string_values();
+    std::vector<std::string>& get_string_values();
 
     template<typename Iter, typename T>
     Iter bisectional_find(
